@@ -13,4 +13,4 @@ const frequencies = {
 };
 const [score, menu] = randomOptimizer(iterations, seed, frequencies);
 
-console.log(score, menu);
+console.log({ score, menu: JSON.stringify(menu) });

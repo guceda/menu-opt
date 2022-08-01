@@ -1,7 +1,7 @@
-import { fittsLaw } from "../laws/fitts";
+import { fitts as fittsLaw } from "../laws/fitts";
 import { IFrequencies, IMenu } from "../types";
 
-export const objectiveFitts = (menu: IMenu, frequencies: IFrequencies) => {
+export const fitts = (menu: IMenu, frequencies: IFrequencies) => {
   const costs = fittsLaw(menu);
   // Compute sum weighted by click frequencies
   const totalCost = menu.reduce((acc, _entry, idx) => {

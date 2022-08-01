@@ -13,7 +13,7 @@ export const proxyAssociations = (
   associations: IAssociations,
   fallbackValue = 0
 ) => {
-  const handler = {
+  const handler: ProxyHandler<any> = {
     get: (obj, prop) => {
       if (prop in obj) {
         if (typeof obj[prop] === "object") {

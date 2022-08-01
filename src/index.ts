@@ -1,6 +1,16 @@
-import * as laws from "./laws/fitts";
-import * as objectives from "./objectiveFunctions/fittsLaw";
-import * as optimizers from "./optimizers/random";
-import * as samplers from "./samplers/samplers";
+// LAWS
+import { fitts as fittsLaw } from "./laws/fitts";
+// OBJECTIVE FUNCTIONS
+import { associations as objectiveAssoc } from "./objectiveFunctions/associations";
+import { fitts as objectiveFitts } from "./objectiveFunctions/fittsLaw";
+// OPTIMIZERS
+import { random as randomOptimizer } from "./optimizers/random";
+// SAMPLERS
+import { random as randomSampler } from "./samplers/random";
+
+const laws = { fitts: fittsLaw };
+const objectives = { associations: objectiveAssoc, fitts: objectiveFitts };
+const optimizers = { random: randomOptimizer };
+const samplers = { random: randomSampler };
 
 export { laws, objectives, optimizers, samplers };

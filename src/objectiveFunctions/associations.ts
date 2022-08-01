@@ -1,7 +1,7 @@
 import { IAssociations, IMenu } from "../types";
 import { getAssociation } from "../utils/associations-utils";
 
-export const objectiveAssoc = (menu: IMenu, associations: IAssociations) => {
+export const associations = (menu: IMenu, associations: IAssociations) => {
   let sum = 0;
   for (let i = 0; i < menu.length; i++) {
     if (menu[i] == "-") continue;

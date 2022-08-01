@@ -1,5 +1,5 @@
-import { objectiveFitts } from "../objectiveFunctions/fittsLaw";
-import { ramdomsampler } from "../samplers/samplers";
+import { fitts as objectiveFitts } from "../objectiveFunctions/fittsLaw";
+import { random as ramdomSampler } from "../samplers/random";
 import { IFrequencies, IMenu } from "../types";
 
 export const random = (
@@ -11,7 +11,7 @@ export const random = (
   let bestDesign: IMenu = [];
 
   for (let i = 0; i < iterations; ++i) {
-    const candidate = ramdomsampler(seed);
+    const candidate = ramdomSampler(seed);
     const objectiveValue = objectiveFitts(candidate, frequencies);
 
     if (objectiveValue < bestValue) {
