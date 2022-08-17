@@ -1,6 +1,6 @@
 import { ObjectiveFnType } from "./objectives";
 import { IAssociations } from "../dataStructures";
-import { getAssociation } from "../utils/associations-utils";
+import { getAssociation } from "../utils/associations";
 
 interface IAssociationsParams {
   associations: IAssociations;
