@@ -13,11 +13,16 @@ describe("linear menu", () => {
       print: 1,
       redo: 1,
     };
-    const [score, menu] = randomOptimizer(iterations, seed, frequencies);
+    const { bestDesign, bestScore } = randomOptimizer({
+      iterations,
+      seed,
+      params: { frequencies },
+      objectiveFunction: randomOptimizer,
+    });
 
-    console.log({ score, menu: JSON.stringify(menu) });
+    console.log({ score: bestScore, menu: JSON.stringify(bestDesign) });
 
-    expect(menu).toStrictEqual([
+    expect(bestDesign).toStrictEqual([
       "save",
       "saveas",
       "open",

@@ -1,4 +1,4 @@
-import { IAssociations } from "../types";
+import { IAssociations } from "../dataStructures";
 
 export const getAssociation = (
   el1: string,

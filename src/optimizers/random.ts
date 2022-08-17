@@ -1,24 +1,25 @@
-import { fitts as objectiveFitts } from "../objectiveFunctions/fittsLaw";
 import { random as ramdomSampler } from "../samplers/random";
-import { IFrequencies, IMenu } from "../types";
+import { MenuType } from "../dataStructures";
+import { IOptimizerParams, IOptimizerResult } from "./optimizers";
 
-export const random = (
-  iterations: number,
-  seed: IMenu,
-  frequencies: IFrequencies
-) => {
-  let bestValue = Infinity;
-  let bestDesign: IMenu = [];
+export const random = <T>({
+  iterations,
+  seed,
+  params,
+  objectiveFunction,
+}: IOptimizerParams<T>): IOptimizerResult => {
+  let bestScore = Infinity;
+  let bestDesign: MenuType = [];
 
   for (let i = 0; i < iterations; ++i) {
     const candidate = ramdomSampler(seed);
-    const objectiveValue = objectiveFitts(candidate, frequencies);
+    const objectiveValue = objectiveFunction({ candidate, params });
 
-    if (objectiveValue < bestValue) {
+    if (objectiveValue < bestScore) {
       // Minimization task
-      bestValue = objectiveValue;
+      bestScore = objectiveValue;
       bestDesign = candidate;
     }
   }
-  return [bestValue, bestDesign];
+  return { bestScore, bestDesign };
 };
