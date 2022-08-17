@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "compile": "npx tsc",
     "compile-watch": "npx tsc -w"
   },
