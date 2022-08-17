@@ -1,5 +1,7 @@
+import { MenuType } from "../dataStructures";
+
 interface IObjectiveFnParams<T> {
-  candidate: IMenu;
+  candidate: MenuType;
   params: T;
 }
 

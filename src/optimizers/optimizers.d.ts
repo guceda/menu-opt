@@ -1,13 +1,13 @@
-import { IMenu } from "..";
+import { MenuType } from "../dataStructures";
 
 export interface IOptimizerParams<T> {
   iterations: number;
-  seed: IMenu;
+  seed: MenuType;
   params: ObjectiveFnParams<T>["params"];
   objectiveFunction: ObjectiveFnType<T>;
 }
 
 export interface IOptimizerResult {
   bestScore: number;
-  bestDesign: IMenu;
+  bestDesign: MenuType;
 }

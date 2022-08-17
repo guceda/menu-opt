@@ -12,7 +12,7 @@ export const random = <T>({
   let bestDesign: MenuType = [];
 
   for (let i = 0; i < iterations; ++i) {
-    const candidate = ramdomSampler(seed);
+    const candidate = ramdomSampler({ candidate: seed, params: {} });
     const objectiveValue = objectiveFunction({ candidate, params });
 
     if (objectiveValue < bestScore) {

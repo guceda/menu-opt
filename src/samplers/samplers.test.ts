@@ -1,4 +1,4 @@
-const { ramdomsampler } = require("./samplers");
+import { random as randomSampler } from "./";
 
 const mockedRandom = () => {
   let state = 0;
@@ -6,9 +6,10 @@ const mockedRandom = () => {
 };
 
 test("ramdom sampler", () => {
-  expect(ramdomsampler(["a", "b", "c"], mockedRandom())).toStrictEqual([
-    "c",
-    "b",
-    "a",
-  ]);
+  expect(
+    randomSampler({
+      candidate: ["a", "b", "c"],
+      params: { random: mockedRandom() },
+    })
+  ).toStrictEqual(["c", "b", "a"]);
 });
