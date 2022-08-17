@@ -1,5 +1,5 @@
 import { random as ramdomSampler } from "../samplers/random";
-import { MenuType } from "../dataStructures";
+import { MenuType } from "../declarations/dataStructures";
 import { IOptimizerParams, IOptimizerResult } from "./optimizers";
 
 export const random = <T>({

@@ -1,4 +1,4 @@
-import { MenuType } from "../dataStructures";
+import { MenuType } from "../declarations/dataStructures";
 
 interface IObjectiveFnParams<T> {
   candidate: MenuType;

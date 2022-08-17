@@ -1,6 +1,6 @@
 import { ObjectiveFnType } from "./objectives";
 import { fitts as fittsLaw } from "../laws/fitts";
-import { IFrequencies } from "../dataStructures";
+import { IFrequencies } from "../declarations/dataStructures";
 
 interface IFittsParams {
   frequencies: IFrequencies;

@@ -5,11 +5,13 @@ const mockedRandom = () => {
   return () => state--;
 };
 
-test("ramdom sampler", () => {
-  expect(
-    randomSampler({
-      candidate: ["a", "b", "c"],
-      params: { random: mockedRandom() },
-    })
-  ).toStrictEqual(["c", "b", "a"]);
+describe("samplers", () => {
+  test("ramdom", () => {
+    expect(
+      randomSampler({
+        candidate: ["a", "b", "c"],
+        params: { random: mockedRandom() },
+      })
+    ).toStrictEqual(["c", "b", "a"]);
+  });
 });

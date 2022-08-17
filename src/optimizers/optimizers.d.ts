@@ -1,9 +1,10 @@
-import { MenuType } from "../dataStructures";
+import { MenuType } from "../declarations/dataStructures";
+import { ObjectiveFnType,IObjectiveFnParams } from "../objectiveFunctions";
 
 export interface IOptimizerParams<T> {
   iterations: number;
   seed: MenuType;
-  params: ObjectiveFnParams<T>["params"];
+  params: IObjectiveFnParams<T>["params"];
   objectiveFunction: ObjectiveFnType<T>;
 }
 
