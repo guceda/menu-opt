@@ -1,0 +1,151 @@
+# Combinatorial linear menu optimization
+
+The goal of this package is to provide a set of tools to search in a design space with a finite set of possibilities for candidate designs with desired qualities to determine the best possible solution.
+
+It provides a set of utilities to optimize the ordering of entries in a linear menu (e.g one-level menu).
+
+## Structure
+
+The package is structured as follows:
+
+### Laws:
+
+Set of rules to be used to rate the goodness of a given design.
+
+The ones available are:
+
+- _Fitts's Law_: Fitts's law is a predictive model of human movement primarily used in human-computer interaction and ergonomics. This scientific law predicts that the time required to rapidly move to a target area is a function of the ratio between the distance to the target and the width of the target.
+
+  ![fitts](assets/fitts.png)
+
+  `MT` stands for movement time, `D` is the distance of the cursor to the target, and `W` is its width, `a` and `b` define the slope (empirically determined constants).
+
+### Objective Functions:
+
+Functions that assign an objective score to a candidate design. Formalizes what is considered a good or bad design. The optimal design is the one that obtains the lower score when minimizing or the greater score when maximizing. Objective functions should be viewed as a predictor of quality for end-users. They make use of one or many of the laws above.
+
+These objective functions consider a good design to have a lower selection time.
+
+The ones available are:
+
+- _Fitts's Law + frequency of use_: To determine how quickly an entry can be selected, a model of motor performance is used. In this case, the movement time is given by Fitts' Law. It takes into account the relevance of the different entries for a given task by considering the frequency of use. The optimal design should allow the most important (hence most frequent) entries to be clicked faster.
+  ![fittsObj](assets/fittsObj.png)
+
+- _Associations_: This objective function provides functionality to work with grouped entries. By providing a set of associations, it pulls associated items together (reward) and pushes unrelated items apart (penalty). The closer the associated elements are, the better the candidate design is.
+  ![assocObj](assets/associationsObj.png)
+
+### Samplers (internal):
+
+Samplers generate candidate designs to be rated. There exist random approaches, exact methods such as integer programming approaches, metaheuristic algorithms such as simulated annealing (SA) and many more. Depending on the approach, reaching the optimal solution would be faster or slower, or even assured or unlikely. Samplers are INTERNALLY used by the `optimizers` and not exposed.
+
+The ones available are:
+
+- _Random_: Random combinations of menu entries are generated and later used by the `optimizer` to explore the design space.
+
+### Optimizers:
+
+Optimizers are the way we explore the design space, and the higher-level step of the process. They minimize a given `objective function` with the output of a `sampler` as a parameter.
+
+The ones available are:
+
+- _Random Search_: Uses the random sampler on a given objective function.
+  
+  ![fittsPpt](assets/fittsOpt.png)
+## Usage
+
+Using the package is pretty straightforward. We need to import one of the `optimizers` and pass the required configuration to it.
+All optimizers have the same signature:
+
+```js
+// PARAMETERS
+{
+  iterations, // number of iterations
+  seed // menu to optimize -> ['save', 'print', 'save as']
+  params // parameters required by the objective function
+  objectiveFunction: // desired objective function
+}
+// OUTPUT
+{
+  bestScore, // score of best found result (remember we are minimizing)
+  bestDesign // best found menu -> ['save', 'save as', 'print']
+}
+```
+
+### Example: Random Optimizer + Fitts's Objective Function
+
+```ts
+import { objectives, optimizers } from "..";
+import { IFrequencies } from "../declarations/dataStructures";
+
+const menuEntries = ["open", "save", "close", "saveas"];
+
+const frequencies: IFrequencies = { open: 4, save: 10, close: 1, saveas: 2 };
+
+const { bestDesign, bestScore } = optimizers.random({
+  iterations: 1000,
+  seed: menuEntries,
+  params: { frequencies },
+  objectiveFunction: objectives.fitts,
+});
+
+console.log(JSON.stringify({ bestDesign, bestScore }, null, 2));
+
+// {
+//   "bestDesign": [ "save", "open", "saveas", "close" ],
+//   "bestScore": 6.150977500432694
+// }
+```
+
+### Example: Random Optimizer + (Fitts's Objective + weighted Associations Objective)
+
+```ts
+import { objectives, optimizers } from "..";
+import {
+  IAssociations,
+  IFrequencies,
+  MenuType,
+} from "../declarations/dataStructures";
+import { ObjectiveFnType } from "../objectiveFunctions";
+
+// Group separators have to be provided as dashes ('-').
+const menuEntries = ["open", "save", "-", "-", "close", "saveas"];
+
+const frequencies: IFrequencies = { open: 4, save: 10, close: 1, saveas: 2 };
+
+// Associations with null size are not necessary.
+const associations: IAssociations = {
+  open: { close: 1 },
+  save: { saveas: 0.9 },
+  close: { save: 0.4 },
+};
+
+const combinedObjFn: ObjectiveFnType<{
+  associations: IAssociations;
+  frequencies: IFrequencies;
+}> = () => (candidate: MenuType) => {
+  return (
+    objectives.fitts({ frequencies })(candidate) +
+    0.5 * objectives.associations({ associations })(candidate)
+  );
+};
+
+const { bestDesign, bestScore } = optimizers.random({
+  iterations: 1000,
+  seed: menuEntries,
+  params: { frequencies },
+  objectiveFunction: combinedObjFn,
+});
+
+console.log(JSON.stringify({ bestDesign, bestScore }, null, 2));
+
+// {
+//   "bestDesign": [ "save", "saveas", "-", "close", "open", "-" ],
+//   "bestScore": 10.486313713864835
+// }
+```
+
+## Development
+
+## References
+
+- Oulasvirta, Antti, Per Ola Kristensson, Xiaojun Bi, and Andrew Howes, eds. Computational Interaction. Oxford: Oxford University Press, 2018. Oxford Scholarship Online, 2018. doi: 10.1093/oso/9780198799603.001.0001.
