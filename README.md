@@ -33,7 +33,7 @@ The ones available are:
 
   $$ objFitts(menu, freqs) = \sum_{i=1}^{n} fittsLaw(menu_{i}) * (freqs_{i}|0) $$
 
-- _Associations_: This objective function provides functionality to work with grouped entries. By providing a set of associations, it pulls associated items together (reward) and pushes unrelated items apart (penalty). The closer the associated elements are, the better the candidate design is.
+- _Associations_: This objective function provides functionality to work with grouped entries. By providing a set of associations [0-1], it pulls associated items together (reward) and pushes unrelated items apart (penalty). The closer the associated elements are, the better the candidate design is.
 
 $$objAssoc(menu, assos) = \sum_{i=1}^{n}\sum_{j= 1}^{n} 
 \begin{cases}
