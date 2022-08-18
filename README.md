@@ -81,6 +81,8 @@ All optimizers have the same signature:
   bestDesign // best found menu -> ['save', 'save as', 'print']
 }
 ```
+The output returs the best found design and its score. 
+The score is an absolute value that should not be used but to compare with its own kind.
 
 ### Example: Random Optimizer + Fitts's Objective Function
 
