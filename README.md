@@ -1,4 +1,4 @@
-# Combinatorial linear menu optimization
+# Combinatorial linear-menu optimization
 
 The goal of this package is to provide a set of tools to search in a design space with a finite set of possibilities for candidate designs with desired qualities to determine the best possible solution.
 
@@ -49,8 +49,9 @@ Optimizers are the way we explore the design space, and the higher-level step of
 The ones available are:
 
 - _Random Search_: Uses the random sampler on a given objective function.
-  
+
   ![fittsPpt](assets/fittsOpt.png)
+
 ## Usage
 
 Using the package is pretty straightforward. We need to import one of the `optimizers` and pass the required configuration to it.
@@ -145,6 +146,20 @@ console.log(JSON.stringify({ bestDesign, bestScore }, null, 2));
 ```
 
 ## Development
+
+The project is fully developed in Typescript. Working examples are provided under `src/demo`.
+
+### Testing
+
+Unit testing is done using `Jest`. To run the tests one can use `npm test`, or `npm test - myfile.test.ts` to run a single file.
+
+### Transpiling
+
+The project is ready to be transpiled to both `esm` and `cjs` using `tsc`. Scripts are available for both actions: `npm run compile-esm`, `npm run compile-cjs`. There is also a combined option: `npm run compile` and a watch version of the `esm`: `npm run compile-watch`. Transpilation also provides with the `d.ts` files.
+
+### Debugging
+
+The project is ready to be easily debugged and executed using `VSCode` debugging tool. The configuration file to be used is `ts-node`.
 
 ## References
 
