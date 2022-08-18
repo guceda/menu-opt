@@ -56,12 +56,11 @@ The ones available are:
 ### Optimizers:
 
 Optimizers are the way we explore the design space, and the higher-level step of the process. They minimize a given `objective function` with the output of a `sampler` as a parameter.
+  $$ \min_{d\in D} objFn(x) $$
 
 The ones available are:
 
 - _Random Search_: Uses the random sampler on a given objective function.
-
-  $$ \min_{d\in D} objFitts(x) $$
 
 ## Usage
 
