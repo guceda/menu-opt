@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "compile": "npx tsc",
-    "compile-watch": "npm run compile -- -w"
+    "compile-esm": "npx tsc -p tsconfig.json",
+    "compile-cjs": "npx tsc -p tsconfig.cjs.json",
+    "compile": "npm run compile-esm & npm run compile-cjs",
+    "compile-watch": "npm run compile-esm -- -w"
   },
   "keywords": [],
   "author": "",
