@@ -2,7 +2,7 @@ import { ObjectiveFnType } from "./objectives";
 import { IAssociations } from "../declarations/dataStructures";
 import { getAssociation, proxyAssociations } from "../utils/associations";
 
-interface IAssociationsParams {
+export interface IAssociationsParams {
   associations: IAssociations;
 }
 

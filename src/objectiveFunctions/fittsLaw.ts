@@ -2,7 +2,7 @@ import { ObjectiveFnType } from "./objectives";
 import { fitts as fittsLaw } from "../laws/fitts";
 import { IFrequencies } from "../declarations/dataStructures";
 
-interface IFittsParams {
+export interface IFittsParams {
   frequencies: IFrequencies;
 }
 
