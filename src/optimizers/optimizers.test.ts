@@ -9,7 +9,7 @@ describe("optimizers", () => {
           iterations: 10,
           seed: ["c", "a", "b"],
           params: {},
-          objectiveFunction: ({ candidate }) => candidate.indexOf("a"),
+          objectiveFunction: () => (candidate) => candidate.indexOf("a"),
         }).bestDesign[0]
       ).toBe("a");
     });

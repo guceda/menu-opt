@@ -13,7 +13,7 @@ export const random = <T>({
 
   for (let i = 0; i < iterations; ++i) {
     const candidate = ramdomSampler({ candidate: seed, params: {} });
-    const objectiveValue = objectiveFunction({ candidate, params });
+    const objectiveValue = objectiveFunction(params)(candidate);
 
     if (objectiveValue < bestScore) {
       // Minimization task

@@ -5,28 +5,24 @@ import { fitts as fittsObj } from "./fittsLaw";
 describe("objective functions", () => {
   test("associations", () => {
     const runOne = associationsObj({
-      candidate: ["a", "c", "b"],
-      params: {
-        associations: proxyAssociations({ a: { b: 0.5 }, b: { c: 0.5 } }),
-      },
-    });
+      associations: proxyAssociations({ a: { b: 0.5 }, b: { c: 0.5 } }),
+    })(["a", "c", "b"]);
     const runTwo = associationsObj({
-      candidate: ["a", "b", "c"],
-      params: {
-        associations: proxyAssociations({ a: { b: 0.5 }, b: { c: 0.5 } }),
-      },
-    });
+      associations: proxyAssociations({ a: { b: 0.5 }, b: { c: 0.5 } }),
+    })(["a", "b", "c"]);
     expect(runOne).toBeGreaterThan(runTwo);
   });
   test("fitts", () => {
-    const runOne = fittsObj({
-      candidate: ["a", "c", "b"],
-      params: { frequencies: { a: 3, b: 10, c: 7 } },
-    });
-    const runTwo = fittsObj({
-      candidate: ["b", "c", "a"],
-      params: { frequencies: { a: 3, b: 10, c: 7 } },
-    });
+    const runOne = fittsObj({ frequencies: { a: 3, b: 10, c: 7 } })([
+      "a",
+      "c",
+      "b",
+    ]);
+    const runTwo = fittsObj({ frequencies: { a: 3, b: 10, c: 7 } })([
+      "b",
+      "c",
+      "a",
+    ]);
     expect(runOne).toBeGreaterThan(runTwo);
   });
 });

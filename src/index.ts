@@ -6,11 +6,11 @@ import { fitts as objectiveFitts } from "./objectiveFunctions/fittsLaw";
 // OPTIMIZERS
 import { random as randomOptimizer } from "./optimizers/random";
 // SAMPLERS
-import { random as randomSampler } from "./samplers/random";
+// import { random as randomSampler } from "./samplers/random";
 
 const laws = { fitts: fittsLaw };
 const objectives = { associations: objectiveAssoc, fitts: objectiveFitts };
 const optimizers = { random: randomOptimizer };
-const samplers = { random: randomSampler };
+// const samplers = { random: randomSampler }; // INTERNAL
 
-export { laws, objectives, optimizers, samplers };
+export { laws, objectives, optimizers, /* samplers */ };

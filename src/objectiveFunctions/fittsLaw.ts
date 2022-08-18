@@ -6,18 +6,17 @@ interface IFittsParams {
   frequencies: IFrequencies;
 }
 
-export const fitts: ObjectiveFnType<IFittsParams> = ({
-  candidate,
-  params: { frequencies },
-}) => {
-  const costs = fittsLaw(candidate);
-  // Compute sum weighted by click frequencies
-  const totalCost = candidate.reduce(
-    (acc: number, _entry: string, idx: number) => {
-      acc += costs[idx] * (frequencies[candidate[idx]] || 0);
-      return acc;
-    },
-    0
-  );
-  return totalCost;
-};
+export const fitts: ObjectiveFnType<IFittsParams> =
+  ({ frequencies }) =>
+  (candidate) => {
+    const costs = fittsLaw(candidate);
+    // Compute sum weighted by click frequencies
+    const totalCost = candidate.reduce(
+      (acc: number, _entry: string, idx: number) => {
+        acc += costs[idx] * (frequencies[candidate[idx]] || 0);
+        return acc;
+      },
+      0
+    );
+    return totalCost;
+  };
