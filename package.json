@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "compile": "npx tsc",
-    "compile-watch": "npx tsc -w"
+    "compile-watch": "npm run compile -- -w"
   },
   "keywords": [],
   "author": "",
