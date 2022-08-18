@@ -16,7 +16,8 @@ The ones available are:
 
 - _Fitts's Law_: Fitts's law is a predictive model of human movement primarily used in human-computer interaction and ergonomics. This scientific law predicts that the time required to rapidly move to a target area is a function of the ratio between the distance to the target and the width of the target.
 
-  ![fitts](assets/fitts.png)
+  $$ MT = a+b*log_{2}(\frac{D}{W}+1)) $$
+
 
   `MT` stands for movement time, `D` is the distance of the cursor to the target, and `W` is its width, `a` and `b` define the slope (empirically determined constants).
 
@@ -29,10 +30,18 @@ These objective functions consider a good design to have a lower selection time.
 The ones available are:
 
 - _Fitts's Law + frequency of use_: To determine how quickly an entry can be selected, a model of motor performance is used. In this case, the movement time is given by Fitts' Law. It takes into account the relevance of the different entries for a given task by considering the frequency of use. The optimal design should allow the most important (hence most frequent) entries to be clicked faster.
-  ![fittsObj](assets/fittsObj.png)
+
+  $$ objFitts(menu, freqs) = \sum_{i=1}^{n} fittsLaw(menu_{i}) * (freqs_{i}|0) $$
 
 - _Associations_: This objective function provides functionality to work with grouped entries. By providing a set of associations, it pulls associated items together (reward) and pushes unrelated items apart (penalty). The closer the associated elements are, the better the candidate design is.
-  ![assocObj](assets/associationsObj.png)
+
+$$objAssoc(menu, assos) = \sum_{i=1}^{n}\sum_{j= 1}^{n} 
+\begin{cases}
+    0,              & \text{if } (menu_{i} = \text{"-"}) ∨ (menu_{j} = \text{"-"})\\
+    1,              & \text{if } (assos_{ij} = 0) ∧ (|i - j| = 1)\\
+    assos_{ij} * |i-j|,              & \text{otherwise}\\
+\end{cases}$$
+
 
 ### Samplers (internal):
 
@@ -40,7 +49,9 @@ Samplers generate candidate designs to be rated. There exist random approaches, 
 
 The ones available are:
 
-- _Random_: Random combinations of menu entries are generated and later used by the `optimizer` to explore the design space.
+- _Random_: Permutations of menu entries are generated and later used by the `optimizer` to explore the design space.
+
+
 
 ### Optimizers:
 
@@ -50,7 +61,7 @@ The ones available are:
 
 - _Random Search_: Uses the random sampler on a given objective function.
 
-  ![fittsPpt](assets/fittsOpt.png)
+  $$ \min_{d\in D} objFitts(x) $$
 
 ## Usage
 
