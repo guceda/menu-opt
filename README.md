@@ -161,6 +161,10 @@ console.log(JSON.stringify({ bestDesign, bestScore }, null, 2));
 
 The project is fully developed in Typescript. Working examples are provided under `src/demo`.
 
+### Extending 
+
+Adding new `laws`, `objectiveFuncions`, `optimizers` or `samplers` is as easy as creating the new function following the Typescript interface provided for each case.
+
 ### Testing
 
 Unit testing is done using `Jest`. To run the tests one can use `npm test`, or `npm test - myfile.test.ts` to run a single file.
