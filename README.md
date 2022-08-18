@@ -1,8 +1,6 @@
 # Combinatorial linear-menu optimization
 
-The goal of this package is to provide a set of tools to search in a design space with a finite set of possibilities for candidate designs with desired qualities to determine the best possible solution.
-
-It provides a set of utilities to optimize the ordering of entries in a linear menu (e.g one-level menu).
+The goal of this package is to provide a set of utilities to optimize the ordering of entries in a linear menu (e.g one-level menu).
 
 ## Structure
 
