@@ -1,10 +1,10 @@
-import { objectives, optimizers } from "..";
+import { objectives, optimizers } from "../";
 import {
   IAssociations,
   IFrequencies,
   MenuType,
 } from "../declarations/dataStructures";
-import { ObjectiveFnType } from "../objectiveFunctions";
+import { InnerObjectiveFnType } from "../objectiveFunctions";
 
 // Group separators have to be provided as dashes ('-').
 const menuEntries = ["open", "save", "-", "-", "close", "saveas"];
@@ -18,10 +18,10 @@ const associations: IAssociations = {
   close: { save: 0.4 },
 };
 
-const combinedObjFn: ObjectiveFnType<{
+const combinedObjFn: InnerObjectiveFnType<{
   associations: IAssociations;
   frequencies: IFrequencies;
-}> = () => (candidate: MenuType) => {
+}> = (candidate: MenuType) => {
   return (
     objectives.fitts({ frequencies })(candidate) +
     0.5 * objectives.associations({ associations })(candidate)
@@ -31,7 +31,6 @@ const combinedObjFn: ObjectiveFnType<{
 const { bestDesign, bestScore } = optimizers.random({
   iterations: 1000,
   seed: menuEntries,
-  params: { frequencies },
   objectiveFunction: combinedObjFn,
 });
 

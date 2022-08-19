@@ -8,8 +8,7 @@ describe("optimizers", () => {
         randomOptimizer({
           iterations: 10,
           seed: ["c", "a", "b"],
-          params: {},
-          objectiveFunction: () => (candidate) => candidate.indexOf("a"),
+          objectiveFunction: (candidate) => candidate.indexOf("a"),
         }).bestDesign[0]
       ).toBe("a");
     });
@@ -28,8 +27,7 @@ describe("optimizers", () => {
       const { bestDesign } = randomOptimizer({
         iterations,
         seed,
-        params: { frequencies },
-        objectiveFunction: fittsObjs,
+        objectiveFunction: fittsObjs({ frequencies }),
       });
       expect(bestDesign).toStrictEqual([
         "save",

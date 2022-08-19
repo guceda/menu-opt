@@ -5,7 +5,6 @@ import { IOptimizerParams, IOptimizerResult } from "./optimizers";
 export const random = <T>({
   iterations,
   seed,
-  params,
   objectiveFunction,
 }: IOptimizerParams<T>): IOptimizerResult => {
   let bestScore = Infinity;
@@ -13,7 +12,7 @@ export const random = <T>({
 
   for (let i = 0; i < iterations; ++i) {
     const candidate = ramdomSampler({ candidate: seed, params: {} });
-    const objectiveValue = objectiveFunction(params)(candidate);
+    const objectiveValue = objectiveFunction(candidate);
 
     if (objectiveValue < bestScore) {
       // Minimization task
