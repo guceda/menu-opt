@@ -15,7 +15,7 @@
     "compile": "npm run compile-esm & npm run compile-cjs",
     "compile-watch": "npm run compile-esm -- -w",
     "prepublish": "npm run compile",
-    "semantic-release": "semantic-release"
+    "release": "semantic-release"
   },
   "keywords": [],
   "author": "",
@@ -35,5 +35,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/guceda/menu-opt.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }

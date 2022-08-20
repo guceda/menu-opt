@@ -1,0 +1,6 @@
+branches:
+  - main
+debug: true
+ci: true
+dryRun: false
+  
