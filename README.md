@@ -30,7 +30,7 @@ The ones available are:
 
   $$ objFitts(menu, freqs) = \sum*{i=1}^{n} fittsLaw(menu*{i}) \* (freqs\_{i}|0) $$
 
-- _Associations_: This objective function provides functionality to work with grouped entries. By providing a set of associations [0-1], it pulls associated items together (reward) and pushes unrelated items apart (penalty). The closer the associated elements are, the better the candidate design is.
+- _Associations_: This objective function provides functionality to work with grouped entries. By providing a set of associations [0,1], it pulls associated items together (reward) and pushes unrelated items apart (penalty). The closer the associated elements are, the better the candidate design is.
 
 $$
 objAssoc(menu, assos) = \sum_{i=1}^{n}\sum_{j= 1}^{n}
@@ -52,7 +52,8 @@ The ones available are:
 ### Optimizers:
 
 Optimizers are the way we explore the design space, and the higher-level step of the process. They minimize a given `objective function` with the output of a `sampler` as a parameter.
-$$ \min\_{d\in D} objFn(x) $$
+
+  $$\min\_{d\in D} objFn(x)$$
 
 The ones available are:
 
