@@ -1,6 +1,6 @@
 import { ObjectiveFnType } from "./objectives";
 import { IAssociations } from "../declarations/dataStructures";
-import { getAssociation, proxyAssociations } from "../utils/associations";
+import { getAssociation } from "../utils/associations";
 
 export interface IAssociationsParams {
   associations: IAssociations;
@@ -9,7 +9,6 @@ export interface IAssociationsParams {
 export const associations: ObjectiveFnType<IAssociationsParams> =
   ({ associations }) =>
   (candidate) => {
-    const proxiedAssoc = proxyAssociations(associations);
     let sum = 0;
     for (let i = 0; i < candidate.length; i++) {
       if (candidate[i] == "-") continue;
@@ -19,7 +18,7 @@ export const associations: ObjectiveFnType<IAssociationsParams> =
 
         // get association
         const association =
-          getAssociation(candidate[i], candidate[j], proxiedAssoc) *
+          getAssociation(candidate[i], candidate[j], associations) *
           Math.abs(i - j);
 
         // unrelated but close, should not be next to each other
