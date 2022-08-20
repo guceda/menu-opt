@@ -2,6 +2,14 @@ import { random as ramdomSampler } from "../samplers/random";
 import { MenuType } from "../declarations/dataStructures";
 import { IOptimizerParams, IOptimizerResult } from "./optimizers";
 
+/**
+ *
+ * @param param
+ * @param param.iterations - Number of iterations
+ * @param param.seed - Candidate menu
+ * @param param.objectiveFunction - Objective function to be used
+ * @returns Best score and best scoring menu
+ */
 export const random = <T>({
   iterations,
   seed,
