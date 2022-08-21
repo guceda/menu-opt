@@ -16,8 +16,7 @@
     "compile": "npm run compile-esm & npm run compile-cjs",
     "compile-watch": "npm run compile-esm -- -w",
     "prerelease": "npm run compile",
-    "release": "semantic-release",
-    "postrelease": "git push --follow-tags"
+    "release": "npx semantic-release"
   },
   "keywords": [],
   "author": "",
