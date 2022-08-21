@@ -35,9 +35,9 @@ jobs:
       # linter --------
       - name: lint
         run: npm run eslint
-      #transpilation --------
-      - name: compile
-        run: npm run compile
+      # #transpilation --------
+      # - name: compile
+      #   run: npm run compile
       #release --------
       - name: release
-        run: npm run release
+        run: npx semantic-release
