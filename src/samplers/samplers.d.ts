@@ -1,4 +1,4 @@
-import { MenuType } from "../declarations/dataStructures";
+import { MenuType } from '../declarations/dataStructures';
 
 interface ISamplersParams<T> {
   candidate: MenuType;

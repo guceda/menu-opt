@@ -1,7 +1,7 @@
-import { objectives, optimizers } from "../src";
-import { IFrequencies } from "../src/declarations/dataStructures";
+import { objectives, optimizers } from '../src';
+import { IFrequencies } from '../src/declarations/dataStructures';
 
-const menuEntries = ["open", "save", "close", "saveas"];
+const menuEntries = ['open', 'save', 'close', 'saveas'];
 
 const frequencies: IFrequencies = { open: 4, save: 10, close: 1, saveas: 2 };
 

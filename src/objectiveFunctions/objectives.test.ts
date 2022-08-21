@@ -1,26 +1,26 @@
-import { associations as associationsObj } from "./associations";
-import { fitts as fittsObj } from "./fittsLaw";
+import { associations as associationsObj } from './associations';
+import { fitts as fittsObj } from './fittsLaw';
 
-describe("objective functions", () => {
-  test("associations", () => {
+describe('objective functions', () => {
+  test('associations', () => {
     const runOne = associationsObj({
       associations: { a: { b: 0.5 }, b: { c: 0.5 } },
-    })(["a", "c", "b"]);
+    })(['a', 'c', 'b']);
     const runTwo = associationsObj({
       associations: { a: { b: 0.5 }, b: { c: 0.5 } },
-    })(["a", "b", "c"]);
+    })(['a', 'b', 'c']);
     expect(runOne).toBeGreaterThan(runTwo);
   });
-  test("fitts", () => {
+  test('fitts', () => {
     const runOne = fittsObj({ frequencies: { a: 3, b: 10, c: 7 } })([
-      "a",
-      "c",
-      "b",
+      'a',
+      'c',
+      'b',
     ]);
     const runTwo = fittsObj({ frequencies: { a: 3, b: 10, c: 7 } })([
-      "b",
-      "c",
-      "a",
+      'b',
+      'c',
+      'a',
     ]);
     expect(runOne).toBeGreaterThan(runTwo);
   });

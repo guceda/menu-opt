@@ -1,4 +1,4 @@
-import { IAssociations } from "../declarations/dataStructures";
+import { IAssociations } from '../declarations/dataStructures';
 
 /**
  * Retrieves the association score for a given pair of entries. It works sideways. If no match is found it returns a fallback

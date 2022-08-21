@@ -1,4 +1,4 @@
-import { SamplersType } from "./samplers";
+import { SamplersType } from './samplers';
 
 export interface IRandomParam {
   random?: () => number;

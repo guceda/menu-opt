@@ -1,6 +1,6 @@
-import { ObjectiveFnType } from "./objectives";
-import { IAssociations } from "../declarations/dataStructures";
-import { getAssociation } from "../utils/associations";
+import { ObjectiveFnType } from './objectives';
+import { IAssociations } from '../declarations/dataStructures';
+import { getAssociation } from '../utils/associations';
 
 export interface IAssociationsParams {
   associations: IAssociations;
@@ -11,10 +11,10 @@ export const associations: ObjectiveFnType<IAssociationsParams> =
   (candidate) => {
     let sum = 0;
     for (let i = 0; i < candidate.length; i++) {
-      if (candidate[i] == "-") continue;
+      if (candidate[i] == '-') continue;
 
       for (let j = 0; j < candidate.length; j++) {
-        if (candidate[j] == "-") continue;
+        if (candidate[j] == '-') continue;
 
         // get association
         const association =

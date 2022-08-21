@@ -1,20 +1,20 @@
-import { fitts as fittsObjs } from "../objectiveFunctions";
-import { random as randomOptimizer } from "./random";
+import { fitts as fittsObjs } from '../objectiveFunctions';
+import { random as randomOptimizer } from './random';
 
-describe("optimizers", () => {
-  describe("ramdom", () => {
-    test("mock objective", () => {
+describe('optimizers', () => {
+  describe('ramdom', () => {
+    test('mock objective', () => {
       expect(
         randomOptimizer({
           iterations: 10,
-          seed: ["c", "a", "b"],
-          objectiveFunction: (candidate) => candidate.indexOf("a"),
+          seed: ['c', 'a', 'b'],
+          objectiveFunction: (candidate) => candidate.indexOf('a'),
         }).bestDesign[0]
-      ).toBe("a");
+      ).toBe('a');
     });
-    test("fitts objective", () => {
+    test('fitts objective', () => {
       const iterations = 100000;
-      const seed = ["open", "save", "close", "undo", "saveas", "print", "redo"];
+      const seed = ['open', 'save', 'close', 'undo', 'saveas', 'print', 'redo'];
       const frequencies = {
         open: 8,
         save: 10,
@@ -30,13 +30,13 @@ describe("optimizers", () => {
         objectiveFunction: fittsObjs({ frequencies }),
       });
       expect(bestDesign).toStrictEqual([
-        "save",
-        "saveas",
-        "open",
-        "undo",
-        "print",
-        "redo",
-        "close",
+        'save',
+        'saveas',
+        'open',
+        'undo',
+        'print',
+        'redo',
+        'close',
       ]);
     });
   });

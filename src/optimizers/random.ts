@@ -1,6 +1,6 @@
-import { random as ramdomSampler } from "../samplers/random";
-import { MenuType } from "../declarations/dataStructures";
-import { IOptimizerParams, IOptimizerResult } from "./optimizers";
+import { random as ramdomSampler } from '../samplers/random';
+import { MenuType } from '../declarations/dataStructures';
+import { IOptimizerParams, IOptimizerResult } from './optimizers';
 
 /**
  *
@@ -10,11 +10,11 @@ import { IOptimizerParams, IOptimizerResult } from "./optimizers";
  * @param param.objectiveFunction - Objective function to be used
  * @returns Best score and best scoring menu
  */
-export const random = <T>({
+export const random = ({
   iterations,
   seed,
   objectiveFunction,
-}: IOptimizerParams<T>): IOptimizerResult => {
+}: IOptimizerParams): IOptimizerResult => {
   let bestScore = Infinity;
   let bestDesign: MenuType = [];
 

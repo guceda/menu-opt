@@ -1,2 +1,2 @@
-export * from "./random";
-export * from "./optimizers.d";
+export * from './random';
+export * from './optimizers.d';
