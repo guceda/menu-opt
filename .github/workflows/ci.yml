@@ -30,14 +30,14 @@ jobs:
       - name: Install deps
         run: npm ci
       # test --------
-      - name: test
+      - name: Test
         run: npm run test -- --browsers=ChromeHeadless
       # linter --------
-      - name: lint
+      - name: Linter
         run: npm run eslint
       # #transpilation --------
       # - name: compile
       #   run: npm run compile
       #release --------
-      - name: release
+      - name: Release
         run: npx semantic-release
