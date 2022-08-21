@@ -22,5 +22,6 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run compile
-      - run: npm test -- --browsers=ChromeHeadless
+      - run: npm run test -- --browsers=ChromeHeadless
+      - run: npm run eslint
       - run: npm run release
