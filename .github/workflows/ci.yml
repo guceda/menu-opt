@@ -28,6 +28,7 @@ jobs:
   #test --------
   test:
     name: test
+    needs: [build]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -43,6 +44,7 @@ jobs:
   #linter --------
   lint:
     name: lint
+    needs: [build]
     runs-on: ubuntu-latest
     strategy:
       matrix:
