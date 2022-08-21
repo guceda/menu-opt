@@ -1,7 +1,4 @@
-branches:
-  - main
-  - name: dev
-    prerelease: true
+branches: [{name: 'main', prerelease: false},{name: 'dev', prerelease: true}]
 debug: true
 ci: true
 dryRun: false
