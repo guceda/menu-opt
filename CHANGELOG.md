@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/guceda/menu-opt/compare/v1.1.0...v1.1.1) (2022-08-26)
+
+
+### Bug Fixes
+
+* fix import paths ([7fc2f9e](https://github.com/guceda/menu-opt/commit/7fc2f9e37db638744c15863d3115415700a2acf6))
+* run demo folder ([76ff5a5](https://github.com/guceda/menu-opt/commit/76ff5a5a6a4b195834f14a7995e34edd703e9235))
+
 # [1.1.0](https://github.com/guceda/menu-opt/compare/v1.0.0...v1.1.0) (2022-08-21)
 
 
