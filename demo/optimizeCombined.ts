@@ -40,11 +40,14 @@ const associations: IAssociations = {
 };
 
 const combinedObjFn: InnerObjectiveFnType = (candidate: MenuType) => {
-  return objectives.associations({ associations })(candidate);
+  return (
+    objectives.fitts({ frequencies })(candidate) +
+    0.5 * objectives.associations({ associations })(candidate)
+  );
 };
 
 const { bestDesign, bestScore } = optimizers.random({
-  iterations: 100000,
+  iterations: 1000,
   seed: menuEntries,
   objectiveFunction: combinedObjFn,
 });
