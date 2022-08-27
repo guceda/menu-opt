@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/guceda/menu-opt/compare/v1.1.1...v1.1.2) (2022-08-27)
+
+
+### Bug Fixes
+
+* revert demo changes ([00bd783](https://github.com/guceda/menu-opt/commit/00bd783c8570b3bc3fff04d7bfea3ccbf0c1f7c5))
+
 ## [1.1.1](https://github.com/guceda/menu-opt/compare/v1.1.0...v1.1.1) (2022-08-26)
 
 
