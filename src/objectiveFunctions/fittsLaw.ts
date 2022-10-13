@@ -1,4 +1,4 @@
-import { ObjectiveFnType } from './objectives';
+import { ObjectiveFnType } from './declarations';
 import { fitts as fittsLaw } from '../laws/fitts';
 import { IFrequencies } from '../declarations/dataStructures';
 

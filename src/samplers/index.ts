@@ -1,2 +1,2 @@
 export * from './random';
-export * from './samplers.d';
+export * from './declarations';

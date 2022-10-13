@@ -1,4 +1,4 @@
-import { ObjectiveFnType } from './objectives';
+import { ObjectiveFnType } from './declarations';
 import { IAssociations } from '../declarations/dataStructures';
 import { getAssociation } from '../utils/associations';
 

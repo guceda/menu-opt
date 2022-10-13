@@ -1,6 +1,6 @@
 import { random as ramdomSampler } from '../samplers/random';
 import { MenuType } from '../declarations/dataStructures';
-import { IOptimizerParams, IOptimizerResult } from './optimizers';
+import { IOptimizerParams, IOptimizerResult } from './declarations';
 
 /**
  *
