@@ -5,7 +5,7 @@ export const simulatedAnnealing = ({
   seed,
   objectiveFunction,
   tempMin = 0.001,
-  tempMax = 15,
+  tempMax = 30,
   getTemp = (prevTemperature: number) => prevTemperature - 0.001,
 }: IOptimizerParams): IOptimizerResult => {
   let currentTemp = tempMax;

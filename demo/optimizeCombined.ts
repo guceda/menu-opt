@@ -45,10 +45,28 @@ const combinedObjFn: InnerObjectiveFnType = (candidate: MenuType) => {
   );
 };
 
-const { bestDesign, bestScore } = optimizers.random({
-  iterations: 100000,
-  seed: menuEntries,
-  objectiveFunction: combinedObjFn,
-});
+const t0 = Date.now();
+const { bestDesign: bestDesignRandom, bestScore: bestScoreRandom } =
+  optimizers.random({
+    iterations: 100000,
+    seed: menuEntries,
+    objectiveFunction: combinedObjFn,
+  });
 
-console.log(JSON.stringify({ bestDesign, bestScore }, null, 2));
+const t1 = Date.now() - t0;
+console.log(
+  JSON.stringify({ bestDesignRandom, bestScoreRandom, time: t1 }, null, 2)
+);
+
+const t2 = Date.now();
+const { bestDesign: bestDesignAnnealing, bestScore: bestScoreAnnealing } =
+  optimizers.simulatedAnnealing({
+    iterations: 100000,
+    seed: menuEntries,
+    objectiveFunction: combinedObjFn,
+  });
+
+const t3 = Date.now() - t2;
+console.log(
+  JSON.stringify({ bestDesignAnnealing, bestScoreAnnealing, time: t3 }, null, 2)
+);
