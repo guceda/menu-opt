@@ -99,7 +99,7 @@ jobs:
       - name: Run Jest
         run: npm run test
 
-  prepare:
+  build:
     needs: [lint, unit-test]
     runs-on: ubuntu-latest
 
