@@ -1,4 +1,4 @@
-import { random as randomSampler } from './';
+import { random as randomSampler } from '.';
 
 const mockedRandom = () => {
   let state = 0;
