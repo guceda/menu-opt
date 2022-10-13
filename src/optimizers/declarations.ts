@@ -2,9 +2,9 @@ import { MenuType } from '../declarations/dataStructures';
 import { InnerObjectiveFnType } from '../objectiveFunctions';
 
 export interface IOptimizerParams {
-  iterations: number;
   seed: MenuType;
   objectiveFunction: InnerObjectiveFnType;
+  [key:string]: any;
 }
 
 export interface IOptimizerResult {
