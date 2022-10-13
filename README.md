@@ -53,11 +53,13 @@ The ones available are:
 
 Optimizers are the way we explore the design space, and the higher-level step of the process. They minimize a given `objective function` with the output of a `sampler` as a parameter.
 
-  $$\min\_{d\in D} objFn(x)$$
+$$\min\_{d\in D} objFn(x)$$
 
 The ones available are:
 
 - _Random Search_: Uses the random sampler on a given objective function.
+
+- _Simulated Annealing_: Probabilistic metaheuristic technique to approximate the global optimum of a given objective function.
 
 ## Usage
 
@@ -85,9 +87,9 @@ The score is an absolute value that should not be used but to compare with its o
 ### Example: Random Optimizer + Fitts's Objective Function
 
 ```ts
-import { objectives, optimizers } from "..";
+import { objectives, optimizers } from '..';
 
-const menuEntries = ["open", "save", "close", "saveas"];
+const menuEntries = ['open', 'save', 'close', 'saveas'];
 
 const frequencies = { open: 4, save: 10, close: 1, saveas: 2 };
 
@@ -108,11 +110,11 @@ console.log(JSON.stringify({ bestDesign, bestScore }, null, 2));
 ### Example: Random Optimizer + (Fitts's Objective + weighted Associations Objective)
 
 ```ts
-import { objectives, optimizers } from "../";
-import { MenuType } from "../declarations/dataStructures";
+import { objectives, optimizers } from '../';
+import { MenuType } from '../declarations/dataStructures';
 
 // Group separators have to be provided as dashes ('-').
-const menuEntries = ["open", "save", "-", "-", "close", "saveas"];
+const menuEntries = ['open', 'save', '-', '-', 'close', 'saveas'];
 
 const frequencies = { open: 4, save: 10, close: 1, saveas: 2 };
 
