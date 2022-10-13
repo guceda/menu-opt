@@ -13,7 +13,9 @@
     "lint": "eslint 'src/**/*.ts' 'demo/**/*.ts' ",
     "compile-esm": "npx tsc -p tsconfig.json",
     "compile-cjs": "npx tsc -p tsconfig.cjs.json",
-    "dist": "npm run compile-esm & npm run compile-cjs",
+    "clean": "rm -rf ./dist",
+    "build": "npm run compile-esm & npm run compile-cjs",
+    "dist": "npm run clean && npm run build",
     "compile-watch": "npm run compile-esm -- -w",
     "release": "npx semantic-release"
   },
