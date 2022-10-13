@@ -1,4 +1,4 @@
-import { objectives, optimizers } from '../';
+import { objectives, optimizers } from '../src';
 import {
   IAssociations,
   IFrequencies,
@@ -34,20 +34,19 @@ const frequencies: IFrequencies = {
 const associations: IAssociations = {
   open: { close: 1 },
   save: { saveas: 0.9 },
-  close: { save: 0.4 },
   undo: { redo: 1 },
-  about: { print: 0.5 },
+  about: { print: 0.6 },
 };
 
 const combinedObjFn: InnerObjectiveFnType = (candidate: MenuType) => {
   return (
-    objectives.fitts({ frequencies })(candidate) +
-    0.5 * objectives.associations({ associations })(candidate)
+    0.5 * objectives.fitts({ frequencies })(candidate) +
+    objectives.associations({ associations })(candidate)
   );
 };
 
 const { bestDesign, bestScore } = optimizers.random({
-  iterations: 1000,
+  iterations: 100000,
   seed: menuEntries,
   objectiveFunction: combinedObjFn,
 });
