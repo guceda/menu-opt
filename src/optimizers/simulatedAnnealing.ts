@@ -4,42 +4,40 @@ import { IOptimizerParams, IOptimizerResult } from './declarations';
 export const simulatedAnnealing = ({
   seed,
   objectiveFunction,
-  tempMin = 0.001,
-  tempMax = 30,
+  tmpMin = 0.001,
+  tmpMax = 30,
   getTemp = (prevTemperature: number) => prevTemperature - 0.001,
 }: IOptimizerParams): IOptimizerResult => {
-  let currentTemp = tempMax;
+  let currTmp = tmpMax;
 
-  let lastState = seed;
-  let lastEnergy = objectiveFunction(lastState);
+  let lastSample = seed;
+  let lastScore = objectiveFunction(lastSample);
 
-  let bestDesign = lastState;
-  let bestEnergy = lastEnergy;
+  let bestDesign = lastSample;
+  let bestEnergy = lastScore;
 
-  while (currentTemp > tempMin) {
+  while (currTmp > tmpMin) {
     let currentState = ramdomSampler({
       candidate: seed,
       params: { random: Math.random },
     });
     let currentEnergy = objectiveFunction(currentState);
 
-    if (currentEnergy < lastEnergy) {
-      lastState = currentState;
-      lastEnergy = currentEnergy;
+    if (currentEnergy < lastScore) {
+      lastSample = currentState;
+      lastScore = currentEnergy;
     } else {
-      if (
-        Math.random() <= Math.exp(-(currentEnergy - lastEnergy) / currentTemp)
-      ) {
-        lastState = currentState;
-        lastEnergy = currentEnergy;
+      if (Math.random() <= Math.exp(-(currentEnergy - lastScore) / currTmp)) {
+        lastSample = currentState;
+        lastScore = currentEnergy;
       }
     }
 
-    if (bestEnergy > lastEnergy) {
-      bestDesign = lastState;
-      bestEnergy = lastEnergy;
+    if (bestEnergy > lastScore) {
+      bestDesign = lastSample;
+      bestEnergy = lastScore;
     }
-    currentTemp = getTemp(currentTemp);
+    currTmp = getTemp(currTmp);
   }
   return { bestScore: bestEnergy, bestDesign };
 };
