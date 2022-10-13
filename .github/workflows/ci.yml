@@ -20,7 +20,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
 
     steps:
@@ -56,7 +56,7 @@ jobs:
         run: npm run dist
 
   lint:
-    needs: [build]
+    needs: [prepare]
 
     runs-on: ubuntu-latest
 
@@ -80,7 +80,7 @@ jobs:
         run: npm run lint
 
   unit-test:
-    needs: [build]
+    needs: [prepare]
     runs-on: ubuntu-latest
 
     steps:
@@ -101,3 +101,26 @@ jobs:
 
       - name: Run Jest
         run: npm run test
+
+  prepare:
+    needs: [lint, unit-test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Use node modules cache
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: |
+            **/node_modules
+            ~/.npm
+            dist
+          key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
+
+      - name: Run dist
+        run: npm run dist
