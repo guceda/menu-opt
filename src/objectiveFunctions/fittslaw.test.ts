@@ -1,4 +1,3 @@
-import { associations as associationsObj } from './associations';
 import { fitts as fittsObj } from './fittsLaw';
 
 describe('objective functions', () => {

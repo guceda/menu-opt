@@ -4,7 +4,7 @@ import { InnerObjectiveFnType } from '../objectiveFunctions';
 export interface IOptimizerParams {
   seed: MenuType;
   objectiveFunction: InnerObjectiveFnType;
-  [key:string]: any;
+  [key: string]: unknown;
 }
 
 export interface IOptimizerResult {

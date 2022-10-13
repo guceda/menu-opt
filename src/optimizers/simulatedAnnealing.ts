@@ -17,11 +17,11 @@ export const simulatedAnnealing = ({
   let bestEnergy = lastScore;
 
   while (currTmp > tmpMin) {
-    let currentState = ramdomSampler({
+    const currentState = ramdomSampler({
       candidate: seed,
       params: { random: Math.random },
     });
-    let currentEnergy = objectiveFunction(currentState);
+    const currentEnergy = objectiveFunction(currentState);
 
     if (currentEnergy < lastScore) {
       lastSample = currentState;
