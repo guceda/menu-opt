@@ -10,12 +10,11 @@
   ],
   "scripts": {
     "test": "jest --coverage",
-    "eslint": "eslint 'src/**/*.ts' 'demo/**/*.ts' ",
+    "lint": "eslint 'src/**/*.ts' 'demo/**/*.ts' ",
     "compile-esm": "npx tsc -p tsconfig.json",
     "compile-cjs": "npx tsc -p tsconfig.cjs.json",
-    "compile": "npm run compile-esm & npm run compile-cjs",
+    "dist": "npm run compile-esm & npm run compile-cjs",
     "compile-watch": "npm run compile-esm -- -w",
-    "prerelease": "npm run compile",
     "release": "npx semantic-release"
   },
   "keywords": [],
