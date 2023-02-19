@@ -1,6 +1,6 @@
 import { MenuType } from '../declarations/dataStructures';
 
-interface ISamplersParams<T> {
+export interface ISamplersParams<T> {
   candidate: MenuType;
   params: T;
 }
