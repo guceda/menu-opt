@@ -72,7 +72,7 @@ The ones available are:
 ## Usage
 
 Using the package is pretty straightforward. We need to import one of the `optimizers` and pass the required configuration to it.
-All optimizers have the same signature:
+All optimizers have a very similar signature:
 
 ```js
 // PARAMETERS
@@ -115,7 +115,7 @@ console.log(JSON.stringify({ bestDesign, bestScore }, null, 2));
 // }
 ```
 
-### Example: Random Optimizer + (Fitts's Objective + weighted Associations Objective)
+### Example: Custom Objective Function. Random Optimizer + (Fitts's Objective + weighted Associations Objective)
 
 ```ts
 import { objectives, optimizers } from '../';
@@ -133,7 +133,7 @@ const associations = {
   close: { save: 0.4 },
 };
 
-const combinedObjFn = (candidate: MenuType) => {
+const combinedObjFn: InnerObjectiveFnType = (candidate) => {
   return (
     objectives.fitts({ frequencies })(candidate) +
     0.5 * objectives.associations({ associations })(candidate)
