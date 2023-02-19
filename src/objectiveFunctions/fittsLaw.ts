@@ -6,6 +6,14 @@ export interface IFittsParams {
   frequencies: IFrequencies;
 }
 
+/**
+ * Fitts' law objective function for menu selection.
+ * Fitts' Law is a human performance model used to predict the time
+ * required to rapidly move to a target area, as a function of the
+ * distance to the target and the size of the target.
+ * @param frequencies - Object mapping each menu item to its selection frequency.
+ * @returns The objective function that computes the total cost of selecting the given menu.
+ */
 export const fitts: ObjectiveFnType<IFittsParams> =
   ({ frequencies }) =>
   (candidate) => {

@@ -3,12 +3,11 @@ import { MenuType } from '../declarations/dataStructures';
 import { IOptimizerParams, IOptimizerResult } from './declarations';
 
 /**
- *
- * @param param
- * @param param.iterations - Number of iterations
- * @param param.seed - Candidate menu
- * @param param.objectiveFunction - Objective function to be used
- * @returns Best score and best scoring menu
+ * Random search optimization algorithm.
+ * @param iterations - The number of iterations to perform.
+ * @param seed - The seed menu to start with.
+ * @param objectiveFunction - The function to optimize.
+ * @returns The best solution found and its score.
  */
 export const random = ({
   iterations,

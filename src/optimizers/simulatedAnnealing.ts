@@ -1,6 +1,17 @@
 import { random as ramdomSampler } from '../samplers/random';
 import { IOptimizerParams, IOptimizerResult } from './declarations';
 
+/**
+ * Simulated annealing optimization algorithm. A metaheuristic optimization algorithm that
+ * uses a probabilistic approach to search for the global minimum of a
+ * function in a large search space.
+ * @param seed - The initial design to start from.
+ * @param objectiveFunction - A function that evaluates the energy of a design.
+ * @param tmpMin - The minimum temperature for the annealing process.
+ * @param tmpMax - The maximum temperature for the annealing process.
+ * @param getTemp - A function that returns the next temperature based on the previous temperature.
+ * @returns The best design and its associated energy score.
+ */
 export const simulatedAnnealing = ({
   seed,
   objectiveFunction,

@@ -5,7 +5,7 @@ export interface IRandomParam {
 }
 
 /**
- * Generates a random sample of a menu by permutating its elements.
+ * Returns a menu sample by randomly permutating its elements.
  * @param params
  * @param params.candidate - Candidate menu
  * @param params.params - Random function

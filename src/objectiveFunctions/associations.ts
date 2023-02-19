@@ -6,6 +6,12 @@ export interface IAssociationsParams {
   associations: IAssociations;
 }
 
+/**
+ * Calculates the sum of association values between pairs of items in a candidate sequence,
+ * weighted by their distance and penalizing unrelated but adjacent items.
+ * @param {IAssociationsParams} param0 - An object containing the associations matrix.
+ * @returns {ObjectiveFnType} An objective function that takes a candidate and returns its associations score.
+ */
 export const associations: ObjectiveFnType<IAssociationsParams> =
   ({ associations }) =>
   (candidate) => {

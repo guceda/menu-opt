@@ -14,7 +14,9 @@ The ones available are:
 
 - _Fitts's Law_: Fitts's law is a predictive model of human movement primarily used in human-computer interaction and ergonomics. This scientific law predicts that the time required to rapidly move to a target area is a function of the ratio between the distance to the target and the width of the target.
 
-  $$ MT = a+b\*log\_{2}(\frac{D}{W}+1)) $$
+  $$
+  MT = a+b*log2((D/W)+1)
+  $$
 
   `MT` stands for movement time, `D` is the distance of the cursor to the target, and `W` is its width, `a` and `b` define the slope (empirically determined constants).
 
@@ -28,7 +30,7 @@ The ones available are:
 
 - _Fitts's Law + frequency of use_: To determine how quickly an entry can be selected, a model of motor performance is used. In this case, the movement time is given by Fitts' Law. It takes into account the relevance of the different entries for a given task by considering the frequency of use. The optimal design should allow the most important (hence most frequent) entries to be clicked faster.
 
-  $$ 
+  $$
   objFitts(menu, freqs) = \sum_{i=1}^{n} fittsLaw(menu*{i}) (freqs\_{i}|0)
   $$
 
@@ -49,7 +51,9 @@ Samplers generate candidate designs to be rated. There exist random approaches, 
 
 The ones available are:
 
-- _Random_: Permutations of menu entries are generated and later used by the `optimizer` to explore the design space.
+- _Random_: Returns a menu sample by randomly shuffling its elements.
+
+- _Permutation_: Generates all permutations of an array..
 
 ### Optimizers:
 
@@ -59,9 +63,11 @@ $$\min\_{d\in D} objFn(x)$$
 
 The ones available are:
 
-- _Random Search_: Uses the random sampler on a given objective function.
+- _Random Search_: Random search optimization algorithm. Uses the _random_ sampler on a given objective function.
 
-- _Simulated Annealing_: Probabilistic metaheuristic technique to approximate the global optimum of a given objective function.
+- _Linear Search_: Exhaustive linear search optimization algorithm. Uses the _permutation_ sampler on a given objective function.
+
+- _Simulated Annealing_: Simulated annealing optimization algorithm. A metaheuristic optimization algorithm that uses a probabilistic approach to search for the global minimum of a function in a large search space
 
 ## Usage
 
