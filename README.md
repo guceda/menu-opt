@@ -53,7 +53,7 @@ The ones available are:
 
 - _Random_: Returns a menu sample by randomly shuffling its elements.
 
-- _Permutation_: Generates all permutations of an array..
+- _Permutation_: Generates all permutations of an array.
 
 ### Optimizers:
 
