@@ -1,6 +1,6 @@
 # Combinatorial linear-menu optimization
 
-The goal of this package is to provide a set of utilities to optimize the ordering of entries in a linear menu (e.g one-level menu).
+This package provides a set of utilities to optimize the ordering of entries in a linear menu (e.g one-level menu).
 
 ## Structure
 
@@ -28,7 +28,9 @@ The ones available are:
 
 - _Fitts's Law + frequency of use_: To determine how quickly an entry can be selected, a model of motor performance is used. In this case, the movement time is given by Fitts' Law. It takes into account the relevance of the different entries for a given task by considering the frequency of use. The optimal design should allow the most important (hence most frequent) entries to be clicked faster.
 
-  $$ objFitts(menu, freqs) = \sum*{i=1}^{n} fittsLaw(menu*{i}) \* (freqs\_{i}|0) $$
+  $$ 
+  objFitts(menu, freqs) = \sum_{i=1}^{n} fittsLaw(menu*{i}) (freqs\_{i}|0)
+  $$
 
 - _Associations_: This objective function provides functionality to work with grouped entries. By providing a set of associations [0,1], it pulls associated items together (reward) and pushes unrelated items apart (penalty). The closer the associated elements are, the better the candidate design is.
 
