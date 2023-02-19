@@ -131,6 +131,11 @@ jobs:
             dist
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
+      - name: Setup Git config
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'gon_u@hotmail.com'
+
       - name: Publish major (if applicable)
         if: ${{ github.event.inputs.version == 'major' }}
         run: npm run release:ci -- major --dry-run
