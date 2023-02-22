@@ -32,7 +32,6 @@ jobs:
           path: |
             **/node_modules
             ~/.npm
-            dist
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Set Node v18
@@ -66,7 +65,6 @@ jobs:
           path: |
             **/node_modules
             ~/.npm
-            dist
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Run linter
@@ -89,7 +87,6 @@ jobs:
           path: |
             **/node_modules
             ~/.npm
-            dist
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Run test
@@ -112,7 +109,6 @@ jobs:
           path: |
             **/node_modules
             ~/.npm
-            dist
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Run dist
