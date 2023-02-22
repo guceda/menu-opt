@@ -61,7 +61,6 @@ console.log(
 const t2 = Date.now();
 const { bestDesign: bestDesignAnnealing, bestScore: bestScoreAnnealing } =
   optimizers.simulatedAnnealing({
-    iterations: 100000,
     seed: menuEntries,
     objectiveFunction: combinedObjFn,
   });

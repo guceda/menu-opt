@@ -13,7 +13,7 @@ export const random = ({
   iterations,
   seed,
   objectiveFunction,
-}: IOptimizerParams): IOptimizerResult => {
+}: IOptimizerParams & { iterations: number }): IOptimizerResult => {
   let bestScore = Infinity;
   let bestDesign: MenuType = [];
 

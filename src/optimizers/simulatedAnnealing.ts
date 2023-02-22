@@ -18,7 +18,11 @@ export const simulatedAnnealing = ({
   tmpMin = 0.001,
   tmpMax = 30,
   getTemp = (prevTemperature: number) => prevTemperature - 0.001,
-}: IOptimizerParams): IOptimizerResult => {
+}: IOptimizerParams & {
+  tmpMin?: number;
+  tmpMax?: number;
+  getTemp?: (prevTemperature: number) => number;
+}): IOptimizerResult => {
   let currTmp = tmpMax;
 
   let lastSample = seed;
