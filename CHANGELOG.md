@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.0.1](https://github.com/guceda/menu-opt/compare/v2.0.0...v2.0.1) (2023-02-22)
+
+
+### Bug Fixes
+
+* **optimizers:** improve declarations ([fc2eef4](https://github.com/guceda/menu-opt/commit/fc2eef4f785d1eaa0b214cdd53316469b241410a))
+
 ## [2.0.0](https://github.com/guceda/menu-opt/compare/v1.1.2...v2.0.0) (2023-02-20)
 
 
