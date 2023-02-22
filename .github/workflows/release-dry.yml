@@ -35,7 +35,6 @@ jobs:
           path: |
             **/node_modules
             ~/.npm
-            dist
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Set Node v18
@@ -71,7 +70,6 @@ jobs:
           path: |
             **/node_modules
             ~/.npm
-            dist
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Run linter
@@ -94,7 +92,6 @@ jobs:
           path: |
             **/node_modules
             ~/.npm
-            dist
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Run test
@@ -128,7 +125,6 @@ jobs:
           path: |
             **/node_modules
             ~/.npm
-            dist
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Setup Git config
