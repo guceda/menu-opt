@@ -35,7 +35,7 @@ jobs:
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Set Node v18
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: npm
