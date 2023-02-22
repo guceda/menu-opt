@@ -36,7 +36,7 @@ jobs:
             **/node_modules
             ~/.npm
             dist
-          key: cache-${{ github.sha }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Set Node v18
         uses: actions/setup-node@v3
@@ -72,7 +72,7 @@ jobs:
             **/node_modules
             ~/.npm
             dist
-          key: cache-${{ github.sha }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Run linter
         run: npm run lint
@@ -95,7 +95,7 @@ jobs:
             **/node_modules
             ~/.npm
             dist
-          key: cache-${{ github.sha }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Run test
         run: npm run test
@@ -129,7 +129,7 @@ jobs:
             **/node_modules
             ~/.npm
             dist
-          key: cache-${{ github.sha }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Setup Git config
         run: |
